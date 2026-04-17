@@ -1,5 +1,5 @@
-package baddrum.logic;
+package badDrum.logic;
 //logic for collision detection
-public class CollisionDetection {
+public class collisionDetection {
 
 }

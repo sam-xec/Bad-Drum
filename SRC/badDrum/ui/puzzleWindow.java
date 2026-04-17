@@ -1,5 +1,5 @@
-package baddrum.ui;
+package badDrum.ui;
 //puzzle UI is generated here 
-public class PuzzleWindow {
+public class puzzleWindow {
 
 }

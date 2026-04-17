@@ -1,4 +1,4 @@
-package baddrum.logic;
+package badDrum.logic;
 
 public class PuzzleLogic {
 

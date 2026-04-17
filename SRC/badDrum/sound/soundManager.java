@@ -1,4 +1,4 @@
-package baddrum.sound;
+package badDrum.sound;
 //All the sound will be produced in this class
 
 
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SoundManager {
+public class soundManager {
 
  private static final String ASSET_PATH = "assets/sounds/";
     private static final Map<String, Clip> clipCache = new HashMap<>();

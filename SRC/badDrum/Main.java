@@ -1,9 +1,9 @@
-package baddrum;
+package badDrum;
 
-import baddrum.sound.SoundManager;
+import badDrum.sound.soundManager;
 
 public class Main{
 public static void main(String[] args){
-    SoundManager.playSound("495662__lilmati__hi-hat.wav");
+    soundManager.playSound("495662__lilmati__hi-hat.wav");
     System.out.println("Drum project started ");
 }}
