@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package badDrum.ui;
 import javax.swing.*;
 import java.awt.*;
