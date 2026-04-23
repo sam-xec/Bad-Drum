@@ -64,7 +64,5 @@ public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new GameWindow(); // MY CODE
-    }
+  
 }
