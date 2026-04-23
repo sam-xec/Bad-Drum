@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package badDrum.ui;
 import javax.swing.*;
 import java.awt.*;
@@ -69,5 +68,3 @@ public class GameWindow extends JFrame {
         new GameWindow(); // MY CODE
     }
 }
-=======
->>>>>>> b7dd79945d40385d9364b37107ea783c21ab61a1
