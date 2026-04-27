@@ -8,7 +8,7 @@ public class PuzzleDialog {
     private static int signal;
     private static int errorCount = 0;
 
-    public static void main() throws InterruptedException {
+    static void main() throws Exception {
         int a = PuzzleLogic.getEquat(0);
         int b = PuzzleLogic.getEquat(1);
         int c = PuzzleLogic.getEquat(2);
@@ -26,7 +26,6 @@ public class PuzzleDialog {
 
         try {
             // Attempt to convert the input String to an integer
-            parsedValue = Integer.parseInt(answer);
             result = Integer.parseInt(answer); // MY CODE
             signal = result;                    // My CODE
             JOptionPane.showMessageDialog(null,
@@ -45,11 +44,14 @@ public class PuzzleDialog {
             JOptionPane.showMessageDialog(null,
                     "Contract violation! Punishment level-up:)\n Please, enter an integer only"); // MY CODE
             // - show error dialog
-                errorCount++;
+                errorCount++; // MY CODE
             // - escalate punishment
 
             // - restart the puzzle
         }
+        //===========================
+        //MY CODE PART
+        //===========================
         int s = PuzzleLogic.getSignal();
         System.out.println("signal: " + s);
     }
