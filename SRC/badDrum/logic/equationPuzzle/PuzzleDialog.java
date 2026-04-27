@@ -9,13 +9,11 @@ public class PuzzleDialog {
     private static int errorCount = 0;
 
     static void main() throws Exception {
-        int a = PuzzleLogic.getEquat(0);
-        int b = PuzzleLogic.getEquat(1);
-        int c = PuzzleLogic.getEquat(2);
-        System.out.printf("%dx + %d = %d\n", a, b, c);
+        int[] equat = PuzzleLogic.getEquat();
+        System.out.printf("%dx + %d = %d\n", equat[0], equat[1], equat[2]);
         String answer = JOptionPane.showInputDialog(null,
                 "Solve this equation: \n" +  // AI
-                        a + "x + " + b + " = " + c +  // AI
+                        equat[0] + "x + " + equat[1] + " = " + equat[2] +  // AI
                         "\nEnter x:");                // AI
         // ======================
         // AI generated section

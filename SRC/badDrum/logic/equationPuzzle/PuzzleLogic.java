@@ -39,13 +39,13 @@ public class PuzzleLogic {
         }
     }
     
-    public static int getEquat(int index) {
+    public static int[] getEquat() {
         generateVars();
         int[] equat = new int[3];
         System.arraycopy(varArray, 1, equat, 0, 3);
         System.out.println("equat: ");
         System.out.println(Arrays.toString(equat));
-        return equat[index];
+        return equat;
     }
     
     public static int getSignal() {
