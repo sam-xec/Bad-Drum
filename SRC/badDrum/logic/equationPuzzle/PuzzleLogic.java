@@ -14,21 +14,7 @@ public class PuzzleLogic {
     private static int c;
     public static int signal;
 
-    public void logic() throws Exception {
-        // Generates initial equation:
-        int attemptCount = PuzzleState.getAttemptCount();
-        if (attemptCount == 0) {
-            generateVars();
-        } else { // or use generated one, for retries
-            getVarArray();
-        }
-        System.out.println("Dialog.main started");
-        // checks the result
-        int result = PuzzleDialog.getResult();
-        checkAnswer(result);
-    }
-
-    public static void generateVars(){
+    public void generateVars(){
         for (int i = varArray.length - 2; i >= 0; i--){
             varArray[i] = (int) ((Math.random()*21)  +10);
         }
@@ -39,24 +25,20 @@ public class PuzzleLogic {
         varArray[3] = (a * x) + b;
         c = varArray[3];
         out.printf("x: %d, a: %d, b: %d, c: %d\n", x, a, b, c);
-
     }
 
-    public static void checkAnswer(int result) {
+    public int checkAnswer(int result) {
         if (result == x) {
             signal = 1; // signal 1 -> puzzle solved
         } else {
             signal = 0; // signal 2 -> retry
         }
+        return signal;
     }
     
-    public static int[] getVarArray() {
+    public int[] getVarArray() {
         out.println("varArray: ");
         out.println(Arrays.toString(varArray));
         return varArray;
-    }
-    
-    public static int getSignal() {
-            return signal;
     }
 }

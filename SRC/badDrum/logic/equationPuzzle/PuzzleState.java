@@ -4,28 +4,28 @@ import javax.swing.*;
 
 import java.awt.*;
 
-import static badDrum.logic.equationPuzzle.PuzzleLogic.signal;
 
 public class PuzzleState {
 
     public static int attemptCount;
     public static int punishLevel;
-    public boolean puzzleSolved;
+    public static boolean puzzleSolved;
 
-    public static void main(String[] args) throws Exception {
+    void main() throws Exception {
         startPuzzle();
     }
 
-    public static void startPuzzle() throws Exception {
+    public void startPuzzle() throws Exception {
         PuzzleLogic Logic = new PuzzleLogic();
         PuzzleDialog Dialog = new PuzzleDialog();
         attemptCount = 0;
+        Logic.generateVars();
         iteratePuzzle(Logic, Dialog);
     }
 
-    public static void iteratePuzzle(PuzzleLogic Logic, PuzzleDialog Dialog) throws Exception {
+    public void iteratePuzzle(PuzzleLogic Logic, PuzzleDialog Dialog) throws Exception {
         try {
-            Dialog.ask();
+            Dialog.ask(Logic);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -34,6 +34,7 @@ public class PuzzleState {
         // for some reason the code stops at this point
         if (puzzleSolved1) {
             Dialog.showSolvedMassage();
+            return;
         } else {
             attemptCount++;
             punishment(attemptCount);
@@ -46,8 +47,11 @@ public class PuzzleState {
                 default:
                     throw new IllegalStateException("Unexpected value: " + signal);
             }
-            iteratePuzzle(Logic, Dialog);
+            if(!puzzleSolved) retry(Logic, Dialog);
         }
+    }
+    private void retry(PuzzleLogic Logic, PuzzleDialog Dialog) throws Exception {
+        iteratePuzzle(Logic, Dialog);
     }
 
     public static boolean getPuzzleState(int signal) {

@@ -7,10 +7,9 @@ public class PuzzleDialog {
 
     public static int result;
     private static int signal;
-    private static int errorCount = 0;
 
-    public void ask() throws Exception {
-        int[] equat = PuzzleLogic.getVarArray();
+    public void ask(PuzzleLogic Logic) throws Exception {
+        int[] equat = Logic.getVarArray();
         System.out.printf("Dialog receive %dx + %d = %d\n", equat[1], equat[2], equat[3]);
         String answer = stateEquation(equat);
         // ======================
@@ -21,8 +20,8 @@ public class PuzzleDialog {
             result = Integer.parseInt(answer); // MY CODE
             // If we reach this line, the input IS numeric
             // result now contains the integer entered by the user
-            signal = PuzzleLogic.getSignal();
-            System.out.println("Signal in Dialog = " + signal);
+            signal = Logic.checkAnswer(result); // MY CODE
+            System.out.println("Signal in Dialog = " + signal); // MY CODE
             setSignal(signal); // MY CODE
         } catch (NumberFormatException e) {
             // If we reach this block, the input is NOT a valid integer
@@ -30,15 +29,10 @@ public class PuzzleDialog {
             signal = -1; // MY CODE
             setSignal(signal);// MY CODE
         }
-        //===========================
-        //MY CODE PART
-        //===========================
-        int s = PuzzleLogic.getSignal();
-        System.out.println("signal: " + s +". Dialog.main has run");
     }
-    public int getResult() {
-        return result;
-    }
+    //===========================
+    //MY CODE PART
+    //===========================
 
     public int getSignal() {
         return signal;
@@ -49,9 +43,9 @@ public class PuzzleDialog {
 
     public String stateEquation(int[] equat) {
         return JOptionPane.showInputDialog(null,
-                "Solve this equation: \n" +  // AI
+                "Solve this equation: \n" +  // AI GENERATED
                         equat[1] + "x + " + equat[2] + " = " + equat[3] +  // AI
-                        "\nEnter x:");                // AI
+                        "\nEnter x:");                // AI GENERATED
     }
 
     public void showErrorMassage(){ // - show error dialog
