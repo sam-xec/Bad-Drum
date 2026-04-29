@@ -14,15 +14,15 @@ public class PuzzleLogic {
     private static int c;
     public static int signal;
 
-    public static void main() {
+    public void logic() throws Exception {
         // Generates initial equation:
         int attemptCount = PuzzleState.getAttemptCount();
         if (attemptCount == 0) {
             generateVars();
-        } else {
+        } else { // or use generated one, for retries
             getVarArray();
         }
-
+        System.out.println("Dialog.main started");
         // checks the result
         int result = PuzzleDialog.getResult();
         checkAnswer(result);
@@ -39,6 +39,7 @@ public class PuzzleLogic {
         varArray[3] = (a * x) + b;
         c = varArray[3];
         out.printf("x: %d, a: %d, b: %d, c: %d\n", x, a, b, c);
+
     }
 
     public static void checkAnswer(int result) {
