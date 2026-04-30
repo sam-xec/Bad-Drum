@@ -33,9 +33,10 @@ public class PuzzleState {
             throw new RuntimeException(e);
         }
         int signal = Dialog.getSignal();
-        boolean puzzleSolved1 = getPuzzleState(signal);
         // for some reason the code stops at this point
-        if (puzzleSolved1) {
+        boolean solved = getPuzzleState(signal);
+        System.out.println("Puzzle solved: "+ puzzleSolved+ ". signal = " + signal);
+        if (puzzleSolved) {
             Dialog.showSolvedMassage();
         } else {
             attemptCount++;
@@ -58,6 +59,7 @@ public class PuzzleState {
 
     public static boolean getPuzzleState(int signal) {
         System.out.println("Signal passed to State = " + signal);
+        if (signal == 1) puzzleSolved = true;
         System.out.println("Getting puzzle state..." + puzzleSolved);
         return puzzleSolved;
     }

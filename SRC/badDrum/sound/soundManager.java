@@ -9,53 +9,28 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class soundManager {
+public class SoundManager {
 
- private static final String ASSET_PATH = "assets/sounds/";
-    private static final Map<String, Clip> clipCache = new HashMap<>();
+    static FloatControl vol;  // My Code
+    public static float volumeLevel = -10; /* mute = -80*/ // My Code
 
-    public static void playSound(String fileName) {
-        new Thread(() -> {
-            try {
-                Clip clip = getClip(fileName);
 
-                if (clip.isRunning()) {
-                    clip.stop();
-                }
+    PlaySound sound;
 
-                clip.setFramePosition(0);
-                clip.start();
-
-            } catch (Exception e) {
-                System.err.println("Sound playback error: " + fileName);
-                e.printStackTrace();
-            }
-        }).start();
+    public void play(){
+        PlaySound sound = new PlaySound();
+        vol =(FloatControl)sound.clip.getControl(FloatControl.Type.MASTER_GAIN); // MY CODE
+        vol.setValue(volumeLevel); // MY CODE
     }
 
-    private static Clip getClip(String fileName)
-            throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-
-        if (clipCache.containsKey(fileName)) {
-            return clipCache.get(fileName);
-        }
-
-        File soundFile = new File(ASSET_PATH + fileName);
-
-        System.out.println("Trying to load: " + soundFile.getAbsolutePath());
-        System.out.println("Exists? " + soundFile.exists());
-
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
-
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioStream);
-
-        clipCache.put(fileName, clip);
-        return clip;
+    public void setVolumeLevel(int volumeLevel){
+        SoundManager.volumeLevel = volumeLevel;
     }
 
     public void highPitchSoundOn(int signal){
-        if (signal == 1) ; //turn on high pitch sound
+        if (signal == 1){  //turn on high pitch sound
+           /* To be removed setVolumeLevel(6); */
+        }
     }
 
     public void highPitchSoundOff(int signal){}
