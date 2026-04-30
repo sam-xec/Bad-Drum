@@ -1,54 +1,38 @@
 package badDrum.ui;
+
 import java.awt.*;
 
 public class Stick {
 
-    // ============================
-    //  DATA (FIELDS)
-    // ============================
+    // MY CODE 
+    private int cx;
+    private int cy;
 
-    private int x;          // MY CODE
-    private int y;          // MY CODE
-    private int length;     // MY CODE
-    private Color color;    // MY CODE
-    private int angle;      // AI
+    // MY CODE 
+    private final Color STICK_COLOR = new Color(90, 70, 40);
 
-    // ============================
-    //  CONSTRUCTOR
-    // ============================
-    public Stick(int x, int y, int length, Color color) {
-        this.x = x;             // MY CODE
-        this.y = y;             // MY CODE
-        this.length = length;   // MY CODE
-        this.color = color;     // MY CODE
-        this.angle = -45;       //  AI
+    public Stick(int centerX, int centerY) {
+        this.cx = centerX; // MY CODE
+        this.cy = centerY; // MY CODE
     }
 
-    // ============================
-    //  METHOD: DRAW
-    // ============================
-    public void draw(Graphics g) {
+    // MY CODE 
+    public void draw(Graphics2D g2) {
 
-        g.setColor(color);      // MY CODE
+        g2.setColor(STICK_COLOR); // MY CODE 
+        g2.setStroke(new BasicStroke(10)); //AI code
 
-        // AI
-        int x2 = x + (int)(length * Math.cos(Math.toRadians(angle)));
-        int y2 = y + (int)(length * Math.sin(Math.toRadians(angle)));
+        
+        //AI code
+        g2.drawLine(
+                cx - 180, cy + 120,   
+                cx - 40,  cy + 40     
+        );
 
-        g.drawLine(x, y, x2, y2); // MY CODE
-    }
-
-    // ============================
-    //  METHOD: HIT 
-    // ============================
-    public void hit() {
-        angle = -70;            //AI
-    }
-
-    // ============================
-    //  METHOD: RESET
-    // ============================
-    public void reset() {
-        angle = -45;            // AI
+        
+        g2.drawLine(
+                cx + 180, cy + 120,   
+                cx + 40,  cy + 40     
+        );
     }
 }
