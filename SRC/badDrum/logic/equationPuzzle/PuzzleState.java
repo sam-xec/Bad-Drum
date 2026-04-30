@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import java.awt.*;
 
+import static java.lang.System.exit;
+
 
 public class PuzzleState {
 
@@ -19,6 +21,7 @@ public class PuzzleState {
         PuzzleLogic Logic = new PuzzleLogic();
         PuzzleDialog Dialog = new PuzzleDialog();
         attemptCount = 0;
+        puzzleSolved = false;
         Logic.generateVars();
         iteratePuzzle(Logic, Dialog);
     }
@@ -34,7 +37,6 @@ public class PuzzleState {
         // for some reason the code stops at this point
         if (puzzleSolved1) {
             Dialog.showSolvedMassage();
-            return;
         } else {
             attemptCount++;
             punishment(attemptCount);
@@ -71,9 +73,6 @@ public class PuzzleState {
             default: punishLevel = 3;
             System.out.println("Punishment level = " + punishLevel);
         }
-    }
-    public static int getPunishLevel() {
-        return punishLevel;
     }
 
     public static int getAttemptCount() {

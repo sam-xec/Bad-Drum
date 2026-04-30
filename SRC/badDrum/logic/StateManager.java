@@ -1,24 +1,35 @@
 package badDrum.logic;
 
-public class StateManager<signal> {
+import badDrum.logic.equationPuzzle.PuzzleState;
 
-    public static int pitchSoundOn;
-    public static int signal;
+public class StateManager<T> {
 
-    public void normalPlayMode(signal) {
+    public static boolean pitchSoundOn;
+    private T signal;
+
+    public void normalPlayMode(T signal) throws Exception {
         normalUpdate();
         monitorPuzzleMode(signal);
     }
 
-    public void monitorPuzzleMode(int signal){
-        if (signal == 1) {
+    public void monitorPuzzleMode(T signal) throws Exception {
+        if ((boolean) signal) {
             freeze();
-            pitchSoundOn = 1;
+            pitchSoundOn = true;
+            PuzzleState state = new PuzzleState();
+            state.startPuzzle();
         }
     }
 
-    public void setSignal(int signal){
-        StateManager.signal = signal;
+    public void backToNormal(PuzzleState p){
+        boolean solved = p.puzzleSolved;
+        if (solved){
+            p = null;
+        }
+    }
+
+    public void setSignal(T signal){
+        this.signal = signal;
     }
 
     public void freeze(){
