@@ -54,4 +54,15 @@ public class soundManager {
         return clip;
     }
 
+    public void highPitchSoundOn(int signal){
+        if (signal == 1) ; //turn on high pitch sound
+    }
+
+    public void highPitchSoundOff(int signal){}
+
+    public void punishment(int level){
+        if (level == 1) ; // add punishment sound
+        if (level == 2) ; // add another sound
+        if (level == 3) ; // more sounds:")
+    }
 }
