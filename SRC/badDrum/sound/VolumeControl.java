@@ -1,51 +1,59 @@
 package badDrum.sound;
 
 import javax.sound.sampled.FloatControl;
+import java.lang.Math.*;
 
 public class VolumeControl {
-    static FloatControl vol;  // My Code
 
-    public int baseVolume ;       // normal volume level
-    // current working volume
-    public static float volumeLevel = -10; /* mute = -80*/ // My Code
-    public static int MAX_VOLUME = 6;        // hard upper limit
-    public boolean locked;            // boolean: can volume be reduced?
-    public int punishmentLevel  ;// integer or small enum
+    public static final int MAX_VOLUME = 6; //hard upper limit
+    private static final int MIN_VOLUME = -80;// mute = -80
+    public static float baseVolume = -10;   // My Code
 
-    public VolumeControl(float level) {
-        MAX_VOLUME = 6;
-        setVolumeLevel(level);
+    public static float volumeLevel;
+    private boolean locked;
+
+    static FloatControl vol;
+
+    public VolumeControl(float level) { }
+
+    public void requestVolumeChange(float delta){
+        if (locked && delta < 0){
+            if (true){
+                return;
+            } else {
+                delta = -delta;
+            }
+        }
+        float level = changeVolume(delta);
+        vol = getEffectiveVolume(level);
     }
 
-    public void setVolumeLevel(float level){
-        volumeLevel = level;
-    }
-
-    public FloatControl getEffectiveVolume(int delta){
+    public FloatControl getEffectiveVolume(float level){
+        vol.setValue(level);
         return vol;
     }
 
-    public void increaseVolume(){
-
-    }
-
-    public void reduceVolume(){
-
-    }
-
-    public void lockVolume(){
-
-    }
-
-    public void unlockVolume(){
-
+    private float changeVolume(float delta){
+        volumeLevel = volumeLevel + delta;
+        if(volumeLevel > MAX_VOLUME) volumeLevel = MAX_VOLUME;
+        if(volumeLevel < MIN_VOLUME) volumeLevel = MIN_VOLUME;
+        return volumeLevel;
     }
 
     public boolean isLocked(){
         return locked;
     }
 
-    public void escalatePunishment(){
+    public void lockVolume(){
+        locked = true;
+    }
 
+    private void unlockVolume(){
+        locked = false;
+    }
+
+    public void reset(){
+        volumeLevel = baseVolume;
+        unlockVolume();
     }
 }

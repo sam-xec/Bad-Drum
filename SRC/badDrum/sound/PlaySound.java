@@ -9,7 +9,7 @@ import javax.sound.sampled.*; // MY CODE
 public class PlaySound {
     Clip clip;
 
-    private static final String ASSET_PATH = "assets/sounds/";
+    private static final String ASSET_PATH = "Assets/Sounds/";
     private static final Map<String, Clip> clipCache = new HashMap<>();
 
     public PlaySound() { }

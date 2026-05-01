@@ -22,23 +22,32 @@ public class SoundManager {
         volume.vol.setValue(volume.volumeLevel); // MY CODE
     }
 
-    public void highPitchSoundOn(int signal){
-        if (signal == 1){  //turn on high pitch sound
-           /* To be removed setVolumeLevel(6); */
+    public void highPitchSoundOn(PlaySound sound, VolumeControl volume){
+        volume.requestVolumeChange(VolumeControl.MAX_VOLUME - volume.volumeLevel);
+        volume.lockVolume();
+        while (true) {
+            sound.playSound("Anoy.wav");//turn on high pitch sound
         }
     }
 
-    public void highPitchSoundOff(int signal){}
-
-    public void punishment(int level){
-        if (level == 1) ; // add punishment sound
-        if (level == 2) ; // add another sound
-        if (level == 3) ; // more sounds:")
+    public void highPitchSoundOff(PlaySound sound, VolumeControl volume){
+        sound.clip.stop();
+        sound = null;
+        volume.reset();
     }
 
-    //================================
-    // VOLUME CONTROL
-    //================================
-
-
+    public void escalatePunishment(PlaySound sound, int level) {
+        switch (level) {
+            case 1: // add punishment sound
+                break;
+            case 2: // add another sound
+                break;
+            case 3: // more sounds:")
+                break;
+            case 0: // stop(); // stops all sounds
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + level);
+        }
+    }
 }
