@@ -73,6 +73,7 @@ public class StateManager {
      * @return true if gameplay logic should be updated
      */
     public boolean isGameplay() {
+
         return currentState == State.GAMEPLAY;
     }
 
