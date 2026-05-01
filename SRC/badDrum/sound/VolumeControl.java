@@ -1,8 +1,5 @@
 package badDrum.sound;
 
-import javax.sound.sampled.FloatControl;
-import java.lang.Math.*;
-
 public class VolumeControl {
 
     public static final int MAX_VOLUME = -10; //hard upper limit
@@ -19,7 +16,7 @@ public class VolumeControl {
 
     public void requestVolumeChange(float delta){
         if (locked && delta < 0){
-            if (true){
+            if (random4() != 0){
                 return;
             } else {
                 delta = -delta;
@@ -28,7 +25,7 @@ public class VolumeControl {
         volumeLevel = changeVolume(delta);
     }
 
-    public float getEffectiveVolume(float level){
+    public float getEffectiveVolume(){
         return volumeLevel;
     }
 
@@ -54,5 +51,9 @@ public class VolumeControl {
     public void reset(){
         volumeLevel = baseVolume;
         unlockVolume();
+    }
+
+    private int random4(){
+        return (int) (Math.random()*4);
     }
 }

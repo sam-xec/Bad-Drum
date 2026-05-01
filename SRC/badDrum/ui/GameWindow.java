@@ -2,7 +2,11 @@ package badDrum.ui;
 
 import javax.swing.*;
 import java.awt.*;
-/* Game Window. Creates the buttom and shows the game panel.` */
+
+import badDrum.logic.*;
+import badDrum.ui.*;
+
+/* Game Window. Creates the button and shows the game panel.` */
 
 public class GameWindow extends JFrame {
 
@@ -12,6 +16,18 @@ public class GameWindow extends JFrame {
     private JPanel mainPanel;      // MY CODE
 
     public GameWindow() {
+
+        StateManager stateManager = new StateManager();
+        MovementLogic movementLogic = new MovementLogic();
+        CollisionDetection collisionDetection = new CollisionDetection();
+        GamePanel gamePanel = new GamePanel();
+        GameLoopController loop = new GameLoopController(
+                stateManager,
+                movementLogic,
+                collisionDetection,
+                gamePanel
+        );
+        loop.start();
 
         setTitle("Java Project: Drum Simulator"); // MY CODE
         setExtendedState(JFrame.MAXIMIZED_BOTH);  // AI CODE
@@ -59,7 +75,7 @@ public class GameWindow extends JFrame {
             gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             // AI CODE — add GamePanel 
-            GamePanel gamePanel = new GamePanel();
+            // see first lines
             gameFrame.add(gamePanel);
 
             // MY CODE — close menu window

@@ -81,7 +81,7 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
     public void mouseMoved(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
-        leftStick.setPosition(mouseX, mouseY);
+        // not moves unless movement applies
         repaint();
     }
 
@@ -89,7 +89,7 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
     public void mouseDragged(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
-        leftStick.setPosition(mouseX, mouseY);
+        // not moves unless movement applies
         repaint();
     }
 
@@ -104,10 +104,20 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
         }
         keyX = Math.max(20, Math.min(W - 20, keyX));
         keyY = Math.max(20, Math.min(H - 20, keyY));
-        rightStick.setPosition(keyX, keyY);
+        // not moves unless movement applies
         repaint();
     }
 
     @Override public void keyReleased(KeyEvent e) {}
     @Override public void keyTyped(KeyEvent e) {}
+
+    /**
+     * Applies movement based on the current input state.
+     * This method MUST be called from the game loop.
+     * If it is not called (PUZZLE state), movement freezes automatically.
+     */
+    public void applyMovement() {
+            leftStick.setPosition(mouseX, mouseY);
+            rightStick.setPosition(keyX, keyY);
+    }
 }

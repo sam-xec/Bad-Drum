@@ -97,7 +97,7 @@ instructionButton.addActionListener(e -> {
             rightStick = new RightStick(cx + 200, cy - 80);
         }
 
-        drum.draw(g2); // MY CODE — draw drumset
+        drum.draw(g2); // MY CODE — draw drum
         leftStick.draw(g2); // MY CODE — draw left stick
         rightStick.draw(g2); // MY CODE — draw right stick
     }
@@ -106,13 +106,16 @@ instructionButton.addActionListener(e -> {
     public void mouseMoved(MouseEvent e) {
         leftX = e.getX(); // MY CODE — update X
         leftY = e.getY(); // MY CODE — update Y
-        leftStick.setPosition(leftX, leftY); // MY CODE — move stick
+        // no movement here applyMovement() - 137 // MY CODE — move stick
         repaint(); // MY CODE — redraw
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        mouseMoved(e); // MY CODE — same logic
+        leftX = e.getX(); // MY CODE — update X
+        leftY = e.getY(); // MY CODE — update Y
+        // no code here see
+        repaint(); // MY CODE — redraw
     }
 
     @Override
@@ -123,10 +126,15 @@ instructionButton.addActionListener(e -> {
             case KeyEvent.VK_D: case KeyEvent.VK_RIGHT: rightX += KEY_STEP; break;
         }
 
-        rightStick.setPosition(rightX, rightY); // MY CODE — move stick
+       // no movement here applyMovement() - 138 // MY CODE — move stick
         repaint(); // MY CODE — redraw
     }
 
     @Override public void keyReleased(KeyEvent e) {} // MY CODE — unused
     @Override public void keyTyped(KeyEvent e) {} // MY CODE — unused
+
+    public void applyMovement() {
+        leftStick.setPosition(leftX, leftY);
+        rightStick.setPosition(rightX, rightY); // MY CODE — move stick
+    }
 }

@@ -100,10 +100,10 @@ public class GameLoopController implements ActionListener {
         if (stateManager.isGameplay()) {
 
             // Update stick movement and other motion
-            movementLogic.update();
+            movementLogic.applyMovement();
 
             // Check collisions and trigger gameplay effects
-            collisionDetection.update();
+            //collisionDetection.update();
         }
 
         // Always repaint the UI (even during PUZZLE state)

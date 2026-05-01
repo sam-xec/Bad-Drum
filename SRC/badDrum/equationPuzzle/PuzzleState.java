@@ -28,7 +28,6 @@ public class PuzzleState {
         }
         int signal = Dialog.getSignal();
         // for some reason the code stops at this point
-        boolean solved = getPuzzleState(signal);
         System.out.println("Puzzle solved: "+ puzzleSolved+ ". signal = " + signal);
         if (puzzleSolved) {
             Dialog.showSolvedMassage();
