@@ -155,6 +155,7 @@ instructionButton.addActionListener(e -> {
             case KeyEvent.VK_S: case KeyEvent.VK_DOWN:  rightY += KEY_STEP; break;
             case KeyEvent.VK_A: case KeyEvent.VK_LEFT:  rightX -= KEY_STEP; break;
             case KeyEvent.VK_D: case KeyEvent.VK_RIGHT: rightX += KEY_STEP; break;
+            case KeyEvent.VK_SPACE: playSound.playSound("Kick-Drum.wav"); break;
         }
 
         rightStick.setPosition(rightX, rightY); // MY CODE — move stick
