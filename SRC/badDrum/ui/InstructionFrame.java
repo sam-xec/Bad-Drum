@@ -12,7 +12,7 @@ public class InstructionFrame extends JFrame {
         // MY CODE — window size
         setSize(900, 700);
 
-        // COMMENT AI — center the window
+        // AI code  — center the window
         setLocationRelativeTo(null);
 
         // MY CODE — create main panel with warm studio background
@@ -41,7 +41,7 @@ public class InstructionFrame extends JFrame {
         text.setEditable(false);
         text.setFont(new Font("Georgia", Font.PLAIN, 24));
         text.setForeground(new Color(60, 40, 20));
-        text.setBackground(new Color(240, 230, 210)); // match panel color
+        text.setBackground(new Color(240, 230, 210)); 
         text.setBounds(80, 120, 750, 400);
         panel.add(text);
 
@@ -55,7 +55,7 @@ public class InstructionFrame extends JFrame {
         backButton.setBorderPainted(false);//AI code 
         panel.add(backButton);
 
-        // COMMENT AI — close this window when Back is pressed
+        //AI code  — close this window when Back is pressed
         backButton.addActionListener(e -> dispose());
 
         // MY CODE — show window

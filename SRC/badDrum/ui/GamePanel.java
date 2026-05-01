@@ -12,7 +12,7 @@ public class GamePanel extends JPanel {
     public GamePanel() {
 
         // MY CODE — warm studio background
-        setBackground(new Color(240, 230, 210)); // warm beige
+        setBackground(new Color(240, 230, 210)); 
 
         // MY CODE — manual layout for custom button placement
         setLayout(null);
@@ -22,7 +22,7 @@ public class GamePanel extends JPanel {
 
         // MY CODE — button styling (same as GameWindow)
         instructionButton.setFont(new Font("Georgia", Font.BOLD, 24));
-        instructionButton.setBackground(new Color(180, 140, 90)); // warm brown
+        instructionButton.setBackground(new Color(180, 140, 90)); 
         instructionButton.setForeground(Color.WHITE);
         instructionButton.setFocusPainted(false);
         instructionButton.setBorderPainted(false);//AI code 
@@ -32,7 +32,7 @@ public class GamePanel extends JPanel {
 
         add(instructionButton);
 
-        // COMMENT AI — open instruction window when clicked
+        //AI  code — open instruction window when clicked
         instructionButton.addActionListener(e -> new InstructionFrame());
     }
 
@@ -40,12 +40,12 @@ public class GamePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // COMMENT AI — enable smooth drawing
+        // AI code — enable smooth drawing
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                             RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // MY CODE — calculate center of the screen
+        // MY CODE 
         int cx = getWidth() / 2;
         int cy = getHeight() / 2 - 40;
 
@@ -53,10 +53,10 @@ public class GamePanel extends JPanel {
         drum = new Drum(cx, cy);
         sticks = new Stick(cx, cy);
 
-        // COMMENT AI — draw drums first (background)
+        // AI code — draw drums first (background)
         drum.draw(g2);
 
-        // COMMENT AI — draw sticks on top
+        // AI  code — draw sticks on top
         sticks.draw(g2);
     }
 }
