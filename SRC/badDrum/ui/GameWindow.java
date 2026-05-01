@@ -57,10 +57,24 @@ public class GameWindow extends JFrame {
             gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+<<<<<<< HEAD
             gameFrame.add(new GamePanel()); //AI code  — load the game panel
 
             gameFrame.setVisible(true);
             dispose(); // close the menu window
+=======
+            //AI code
+            GamePanel gamePanel = new GamePanel();
+            gameFrame.add(gamePanel);
+
+            gameFrame.pack();           // MY CODE
+            gameFrame.setVisible(true); // MY CODE
+
+            // MY CODE
+            SwingUtilities.invokeLater(() -> gamePanel.requestFocusForGame());
+
+            dispose(); // MY CODE
+>>>>>>> denys_code_extracted
         });
 
         // MY CODE — exit program
