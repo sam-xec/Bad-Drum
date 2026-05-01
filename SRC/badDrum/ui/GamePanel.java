@@ -131,6 +131,7 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         }
         rightX = Math.max(20, Math.min(w - 20, rightX));
         rightY = Math.max(20, Math.min(h - 20, rightY));
+        rightStick.setPosition(rightX, rightY);
         repaint();
     }
 
