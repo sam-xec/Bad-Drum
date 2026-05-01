@@ -123,7 +123,7 @@ public class CollisionDetection {
     public static String soundFileFor(DrumZone zone) {
         switch (zone) {
             case SNARE:        return "Snare-Drum.wav";
-            case BASS_DRUM:    return "Kick-Drum.wav";
+            case BASS_DRUM:    return "Kick-Drum3.wav";
             case RACK_TOM:     return "Rack-tom.wav";
             case RACK_TOM2:    return "Rack-tom.wav";
             case RACK_TOM3:    return "Rack-tom.wav";

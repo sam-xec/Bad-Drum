@@ -19,7 +19,7 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
 
     private int keyX;
     private int keyY;
-    private static final int KEY_STEP = 8;
+    private static final int KEY_STEP = 50;
 
     //MY CODE
     private Drum drum;
