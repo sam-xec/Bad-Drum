@@ -18,7 +18,7 @@ public class SoundManager {
 
    
     VolumeControl volume = new VolumeControl();
-    PlaySound sound = new PlaySound("Rack-tom.wav", volume.volumeLevel);
+    PlaySound sound = new PlaySound();
     PuzzleState puzzle = new PuzzleState();
 
     public SoundManager() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
