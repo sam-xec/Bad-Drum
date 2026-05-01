@@ -201,7 +201,7 @@ instructionButton.addActionListener(e -> {
         playSound.stopSound("havanagila.wav");
 
         if (result == JOptionPane.OK_OPTION) {
-            JOptionPane.showMessageDialog(this, "Ha! I'm just kidding :)", "BadDrum", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Mazel Tov! You just made a great deal!", "BadDrum", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
