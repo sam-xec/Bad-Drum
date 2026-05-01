@@ -8,7 +8,8 @@ import java.awt.event.MouseEvent;
 public class GamePanel extends JPanel {
 
     private Drum drum;    // MY CODE — drumset object
-    private Stick sticks; // MY CODE — drumsticks object
+    private LeftStick leftStick;
+    private RightStick rightStick; // MY CODE — drumsticks object
     private JButton instructionButton; // MY CODE — button
     private String lastHit = ""; // MY CODE — stores last clicked drum
 
@@ -66,11 +67,13 @@ public class GamePanel extends JPanel {
 
         // MY CODE — create objects
         drum = new Drum(cx, cy);
-        sticks = new Stick(cx, cy);
+         leftStick = new LeftStick(cx, cy);
+         rightStick = new RightStick(cx, cy);
 
         // AI CODE — draw drumset and sticks
         drum.draw(g2);
-        sticks.draw(g2);
+        leftStick.draw(g2);
+        rightStick.draw(g2);
 
         // AI CODE — highlight clicked area (simple yellow overlay)
         g2.setColor(new Color(255, 255, 0, 80));
