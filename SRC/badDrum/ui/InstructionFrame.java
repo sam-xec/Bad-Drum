@@ -9,59 +9,50 @@ public class InstructionFrame extends JFrame {
 
         super("Instructions"); // MY CODE — window title
 
-        // MY CODE — window size
-        setSize(900, 700);
+        setSize(900, 700); // MY CODE — window size
+        setLocationRelativeTo(null); // AI CODE — center window
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // AI CODE — close only this window
 
-        // AI code  — center the window
-        setLocationRelativeTo(null);
+        JPanel panel = new JPanel(); // MY CODE — main panel
+        panel.setLayout(null); // MY CODE — manual layout
+        panel.setBackground(new Color(240, 230, 210)); // MY CODE — warm beige background
+        setContentPane(panel); // MY CODE — attach panel
 
-        // FIX: must be DISPOSE so windowClosed event fires in GamePanel
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JLabel title = new JLabel("HOW TO USE THE DRUM SET"); // MY CODE — title text
+        title.setFont(new Font("Georgia", Font.BOLD, 32)); // MY CODE — title font
+        title.setForeground(new Color(80, 50, 20)); // MY CODE — warm brown color
+        title.setBounds(180, 40, 700, 50); // MY CODE — position
+        panel.add(title); // MY CODE — add to panel
 
-        // MY CODE — create main panel with warm studio background
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        panel.setBackground(new Color(240, 230, 210)); // warm beige
-        setContentPane(panel);
-
-        // MY CODE — title label
-        JLabel title = new JLabel("HOW TO USE THE DRUM SET");
-        title.setFont(new Font("Georgia", Font.BOLD, 32));
-        title.setForeground(new Color(80, 50, 20)); // warm brown
-        title.setBounds(200, 40, 700, 50);
-        panel.add(title);
-
-        // MY CODE — instruction text
-        JTextArea text = new JTextArea();
+        JTextArea text = new JTextArea(); // MY CODE — instruction text box
         text.setText(
-                "• Click on the drums to play sounds.\n" +
-                "• Cymbals are located at the top of the drum set.\n" +
-                "• Sticks show the direction of the hit.\n" +
-                "• Each drum has its own angle and height.\n" +
-                "• Use the interface buttons to navigate.\n" +
-                "• Press BACK to return to the game window.\n"
-        );
-        text.setEditable(false);
-        text.setFont(new Font("Georgia", Font.PLAIN, 24));
-        text.setForeground(new Color(60, 40, 20));
-        text.setBackground(new Color(240, 230, 210)); 
-        text.setBounds(80, 120, 750, 400);
-        panel.add(text);
+                "• Move left stick with the mouse.\n" +
+                "• Move right stick with W A S D.\n" +
+                "• Hit drums to play sounds.\n" +
+                "• Use the INSTRUCTIONS button to open this window.\n" +
+                "• Press BACK to return to the game.\n"
+        ); // MY CODE — instruction text
+        text.setEditable(false); // MY CODE — read-only
+        text.setFont(new Font("Georgia", Font.PLAIN, 24)); // MY CODE — text font
+        text.setForeground(new Color(60, 40, 20)); // MY CODE — text color
+        text.setBackground(new Color(240, 230, 210)); // MY CODE — match panel color
+        text.setBounds(80, 120, 750, 350); // MY CODE — position
+        panel.add(text); // MY CODE — add to panel
 
-        // MY CODE — Back button
-        JButton backButton = new JButton("BACK");
-        backButton.setFont(new Font("Georgia", Font.BOLD, 28));
-        backButton.setBackground(new Color(180, 140, 90)); // warm brown
-        backButton.setForeground(Color.WHITE);
-        backButton.setFocusPainted(false);
-        backButton.setBounds(80, 550, 200, 70);
-        backButton.setBorderPainted(false);//AI code 
-        panel.add(backButton);
+        JButton backButton = new JButton("BACK"); // MY CODE — brown back button
 
-        //AI code  — close this window when Back is pressed
-        backButton.addActionListener(e -> dispose());
+        backButton.setFont(new Font("Georgia", Font.BOLD, 26)); // MY CODE — font
+        backButton.setBackground(new Color(180, 140, 90)); // MY CODE — brown color
+        backButton.setForeground(Color.WHITE); // MY CODE — white text
+        backButton.setFocusPainted(false); // AI CODE — remove blue outline
+        backButton.setBorderPainted(false); // AI CODE — remove border
+        backButton.setOpaque(true); // AI CODE — allow background color
 
-        // MY CODE — show window
-        setVisible(true);
+        backButton.setBounds(80, 520, 200, 70); // MY CODE — position
+        panel.add(backButton); // MY CODE — add to panel
+
+        backButton.addActionListener(e -> dispose()); // AI CODE — close window
+
+        setVisible(true); // MY CODE — show window
     }
 }
