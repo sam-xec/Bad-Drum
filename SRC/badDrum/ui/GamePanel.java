@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-
-<<<<<<< HEAD
     private Drum drum;    // MY CODE — drum set object
     private Stick sticks; // MY CODE — drumsticks object
     private JButton instructionButton; // MY CODE — button for instructions
@@ -15,10 +13,10 @@ public class GamePanel extends JPanel {
     public GamePanel() {
 
         // MY CODE — warm studio background
-        setBackground(new Color(240, 230, 210)); 
-
+        setBackground(new Color(240, 230, 210));
+        setBackground(Color.WHITE);   // MY CODE
         // MY CODE — manual layout for custom button placement
-        setLayout(null);
+        setLayout(new BorderLayout()); // MY CODE
 
         // MY CODE — create "Instructions" button
         instructionButton = new JButton("Instructions");
@@ -37,6 +35,11 @@ public class GamePanel extends JPanel {
 
         //AI  code — open instruction window when clicked
         instructionButton.addActionListener(e -> new InstructionFrame());
+        MovementLogic game = new MovementLogic(); // MY CODE
+        add(game, BorderLayout.CENTER);            // MY CODE
+
+        // Фокус нужен сразу, чтобы WASD/стрелки работали
+        SwingUtilities.invokeLater(game::requestFocusInWindow); // MY CODE
     }
 
     @Override
@@ -46,7 +49,7 @@ public class GamePanel extends JPanel {
         // AI code — enable smooth drawing
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                            RenderingHints.VALUE_ANTIALIAS_ON);
+                RenderingHints.VALUE_ANTIALIAS_ON);
 
         // MY CODE 
         int cx = getWidth() / 2;
@@ -61,16 +64,6 @@ public class GamePanel extends JPanel {
 
         // AI  code — draw sticks on top
         sticks.draw(g2);
-=======
-    public GamePanel() {
-        setLayout(new BorderLayout()); // MY CODE
-        setBackground(Color.WHITE);   // MY CODE
-
-        MovementLogic game = new MovementLogic(); // MY CODE
-        add(game, BorderLayout.CENTER);            // MY CODE
-
-        // Фокус нужен сразу, чтобы WASD/стрелки работали
-        SwingUtilities.invokeLater(game::requestFocusInWindow); // MY CODE
     }
 
     // MY CODE — публичный метод для запроса фокуса извне (после показа окна)
@@ -81,6 +74,5 @@ public class GamePanel extends JPanel {
                 return;
             }
         }
->>>>>>> denys_code_extracted
     }
 }
