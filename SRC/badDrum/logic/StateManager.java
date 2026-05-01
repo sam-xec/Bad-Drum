@@ -5,6 +5,13 @@ import badDrum.equationPuzzle.PuzzleState;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * StateManager is responsible for the game loop
+ * It constantly updates and decides with of two modes should proceed
+ * Game mode or Puzzle mode
+ * That creates a "freeze effect" without freezing ui threads
+ * Thus when the Puzzle starts, you cannot do anything else
+ * unless you solve a puzzle **/
 public class StateManager<T> {
 
     public static boolean pitchSoundOn;

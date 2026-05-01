@@ -4,6 +4,13 @@ package badDrum.sound;
 
 import javax.sound.sampled.*;
 
+/**SoundManager is responsible for playing sounds when collision cures
+ * It uses PlaySound as a tool
+ * <p>
+ * SoundManager is also responsible for:
+ * the centralized volume control system
+ * and punishment mechanisms **/
+
 public class SoundManager {
 
     static FloatControl vol;  // My Code
