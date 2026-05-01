@@ -124,11 +124,11 @@ public class CollisionDetection {
         switch (zone) {
             case SNARE:        return "Snare-Drum.wav";
             case BASS_DRUM:    return "Kick-Drum.wav";
-            case RACK_TOM:     return "low-tom.wav";
-            case RACK_TOM2:    return "low-tom.wav";
-            case RACK_TOM3:    return "low-tom.wav";
+            case RACK_TOM:     return "Rack-tom.wav";
+            case RACK_TOM2:    return "Rack-tom.wav";
+            case RACK_TOM3:    return "Rack-tom.wav";
             case FLOOR_TOM:    return "low-tom.wav";
-            case CRASH_CYMBAL: return "ride-cymbal.wav";
+            case CRASH_CYMBAL: return "Cymabal-drum(1).wav";
             case RIDE_CYMBAL:  return "ride-cymbal.wav";
             default:           return null;
         }
