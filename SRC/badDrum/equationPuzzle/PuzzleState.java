@@ -5,7 +5,7 @@ public class PuzzleState {
 
     public static int attemptCount;
     public static int punishLevel;
-    public static boolean puzzleSolved;
+    public boolean puzzleSolved;
 
     void main() throws Exception {
         startPuzzle();
@@ -51,9 +51,9 @@ public class PuzzleState {
         iteratePuzzle(Logic, Dialog);
     }
 
-    public static boolean getPuzzleState(int signal) {
+    public boolean getPuzzleState(int signal) {
         System.out.println("Signal passed to State = " + signal);
-        if (signal == 1) puzzleSolved = true;
+        if (signal == 1) this.puzzleSolved = true;
         System.out.println("Getting puzzle state..." + puzzleSolved);
         return puzzleSolved;
     }
