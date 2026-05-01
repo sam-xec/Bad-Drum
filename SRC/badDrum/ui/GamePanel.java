@@ -11,7 +11,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     private RightStick rightStick;   // MY CODE — правая палочка (клавиатура)
 
     private JButton instructionButton; // MY CODE — button
-    private String lastHit = "";       // MY CODE — stores last clicked drum
 
     // MY CODE — позиции палочек
     private int leftX, leftY;
@@ -49,17 +48,7 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         // MY CODE — слушаем движение мыши и клавиатуру
         addMouseMotionListener(this);
         addKeyListener(this);
-
-        // AI CODE — mouse click detection using hitmap
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (drum == null) return;
-                lastHit = drum.detectHit(e.getX(), e.getY());
-                repaint();
             }
-        });
-    }
 
     // MY CODE — инициализируем объекты один раз при первом отображении
     @Override
@@ -103,33 +92,13 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
             rightStick = new RightStick(rightX, rightY);
         }
 
-        int cx = getWidth() / 2;
-        int cy = getHeight() / 2 + 40;
 
         // AI CODE — draw drumset and sticks
         drum.draw(g2);
         leftStick.draw(g2);   // MY CODE — левая (мышь)
         rightStick.draw(g2);  // MY CODE — правая (клавиатура)
 
-        // AI CODE — highlight clicked area (simple yellow overlay)
-        g2.setColor(new Color(255, 255, 0, 80));
-        switch (lastHit) {
-            case "snare"       -> drawHit(g2, cx, cy,    0,  -40);
-            case "tomLeft"     -> drawHit(g2, cx, cy, -120,  -80);
-            case "tomRight"    -> drawHit(g2, cx, cy,  120,  -80);
-            case "floorLeft"   -> drawHit(g2, cx, cy, -130,   20);
-            case "floorRight"  -> drawHit(g2, cx, cy,  130,   20);
-            case "kick"        -> drawHit(g2, cx, cy,    0,   80);
-            case "cymbalLeft"  -> drawHit(g2, cx, cy, -180, -160);
-            case "cymbalRight" -> drawHit(g2, cx, cy,  180, -160);
         }
-    }
-
-    // AI CODE — simple highlight circle
-    private void drawHit(Graphics2D g2, int cx, int cy, int dx, int dy) {
-        g2.fillOval(cx + dx - 40, cy + dy - 40, 80, 80);
-    }
-
     // ── мышь → левая палочка ────────────────────────────────────────────
 
     @Override
@@ -162,7 +131,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         }
         rightX = Math.max(20, Math.min(w - 20, rightX));
         rightY = Math.max(20, Math.min(h - 20, rightY));
-        if (rightStick != null) rightStick.setPosition(rightX, rightY); // MY CODE
         repaint();
     }
 
