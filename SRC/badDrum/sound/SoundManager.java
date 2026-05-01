@@ -3,6 +3,9 @@ package badDrum.sound;
 
 
 import javax.sound.sampled.*;
+import badDrum.equationPuzzle.*;
+
+import java.io.IOException;
 
 /**SoundManager is responsible for playing sounds when collision cures
  * It uses PlaySound as a tool
@@ -14,20 +17,25 @@ import javax.sound.sampled.*;
 public class SoundManager {
 
    
-    VolumeControl volume;
+    VolumeControl volume = new VolumeControl();
+    PlaySound sound = new PlaySound("Rack-tom.wav", volume.volumeLevel);
+    PuzzleState puzzle = new PuzzleState();
 
-   
-    public void highPitchSoundOn(PlaySound sound, VolumeControl volume){
-        volume.requestVolumeChange(VolumeControl.MAX_VOLUME - volume.volumeLevel);
-        volume.lockVolume();
-        while (true) {
-            sound.playSound("Anoy.wav");//turn on high pitch sound
-        }
+    public SoundManager() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
     }
 
-    public void highPitchSoundOff(PlaySound sound, VolumeControl volume){
-        sound.clip.stop();
-        sound = null;
+    public void main() throws Exception{
+        highPitchSoundPlay(this.sound);
+    }
+   
+    public void highPitchSoundPlay(PlaySound anoy){
+        volume.requestVolumeChange(VolumeControl.MAX_VOLUME - volume.volumeLevel);
+        volume.lockVolume();
+        while (puzzle.puzzleSolved) {
+            anoy.playSound("Rack-tom.wav");//turn on high pitch sound
+        }
+        anoy.clip.stop();
+        anoy = null;
         volume.reset();
     }
 
@@ -44,5 +52,9 @@ public class SoundManager {
             default:
                 throw new IllegalStateException("Unexpected value: " + level);
         }
+    }
+
+    public void playDrum(int collision){
+
     }
 }
