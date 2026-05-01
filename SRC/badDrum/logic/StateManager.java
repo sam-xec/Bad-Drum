@@ -2,8 +2,8 @@ package badDrum.logic;
 
 import badDrum.equationPuzzle.PuzzleState;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+
 
 /**
  * StateManager is responsible for the game loop
@@ -12,45 +12,76 @@ import java.awt.event.ActionListener;
  * That creates a "freeze effect" without freezing ui threads
  * Thus when the Puzzle starts, you cannot do anything else
  * unless you solve a puzzle **/
-public class StateManager<T> {
+//=====================AI==============================
 
-    public static boolean pitchSoundOn;
-    private T signal;
+/**
+ * StateManager is a central gatekeeper for game logic updates.
+ * It decides whether gameplay logic should run or be frozen.
+ *
+ * IMPORTANT:
+ * - It does NOT stop threads.
+ * - It does NOT know about UI, Swing, sound, or puzzles.
+ * - It only exposes state queries used by the game loop.
+ */
+public class StateManager {
 
-    public void normalPlayMode(T signal) throws Exception {
-        normalUpdate();
-        monitorPuzzleMode(signal);
+    /**
+     * Possible high-level states of the game.
+     * GAMEPLAY  -> logic updates allowed
+     * PUZZLE    -> logic updates frozen
+     */
+    public enum State {
+        GAMEPLAY,
+        PUZZLE
     }
 
-    public void monitorPuzzleMode(T signal) throws Exception {
-        if ((boolean) signal) {
-            freeze();
-            pitchSoundOn = true;
-            PuzzleState state = new PuzzleState();
-            state.startPuzzle();
-        }
+    /**
+     * Holds the current active state.
+     * Default is GAMEPLAY when the game starts.
+     */
+    private State currentState;
+
+    /**
+     * Constructor initializes the game in GAMEPLAY state.
+     */
+    public StateManager() {
+        this.currentState = State.GAMEPLAY;
     }
 
-    public void backToNormal(PuzzleState puzzle){
-        boolean solved = puzzle.puzzleSolved;
-        if (solved){
-            puzzle = null;
-        }
+    /**
+     * Switches the current game state.
+     * This is the ONLY way the state should be changed.
+     *
+     * @param newState the state to switch to
+     */
+    public void setState(State newState) {
+        this.currentState = newState;
     }
 
-    public void setSignal(T signal){
-        this.signal = signal;
+    /**
+     * Returns the current game state.
+     *
+     * @return current State
+     */
+    public State getState() {
+        return currentState;
     }
 
-    public T getSignal() {
-        return signal;
+    /**
+     * Convenience method used by the game loop.
+     *
+     * @return true if gameplay logic should be updated
+     */
+    public boolean isGameplay() {
+        return currentState == State.GAMEPLAY;
     }
 
-    public void freeze(){
-        System.out.println("Movement logic is frozen");
-    }
-
-    public void normalUpdate(){
-        System.out.println("Sticks are moving, Drums are playing");
+    /**
+     * Convenience method used by puzzles or controllers.
+     *
+     * @return true if the game is currently frozen by a puzzle
+     */
+    public boolean isPuzzle() {
+        return currentState == State.PUZZLE;
     }
 }
