@@ -10,38 +10,35 @@ import java.awt.event.*;
 
 public class MovementLogic extends JPanel implements MouseMotionListener, KeyListener {
 
-    //размеры окна
+    //MY CODE
     private static final int W = 1280;
     private static final int H = 720;
 
-    // позиция левой палочки (управляется мышью)
     private int mouseX;
     private int mouseY;
 
-    // позиция правой палочки (управляется клавиатурой)
     private int keyX;
     private int keyY;
     private static final int KEY_STEP = 8;
 
-    // барабан и палочки
+    //MY CODE
     private Drum drum;
-    private LeftStick leftStick;   // левая  — управляется мышью
-    private RightStick rightStick; // правая — управляется клавиатурой
+    private LeftStick leftStick;
+    private RightStick rightStick;
 
     public MovementLogic() {
         setPreferredSize(new Dimension(W, H));
         setBackground(Color.WHITE);
         setFocusable(true);
 
-        // начальные позиции
         mouseX = W / 3;
         mouseY = H / 2;
         keyX   = W * 2 / 3;
         keyY   = H / 2;
 
         drum       = new Drum(W / 2, H / 2 + 60);
-        leftStick  = new LeftStick(mouseX, mouseY);   // MY CODE — левая палочка следует за мышью
-        rightStick = new RightStick(keyX,   keyY);    // MY CODE — правая палочка управляется клавиатурой
+        leftStick  = new LeftStick(mouseX, mouseY);
+        rightStick = new RightStick(keyX,   keyY);
 
         addMouseMotionListener(this);
         addKeyListener(this);
@@ -54,11 +51,12 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         drum.draw(g2);
-        leftStick.draw(g2);    // MY CODE — рисуем левую (мышь)
-        rightStick.draw(g2);   // MY CODE — рисуем правую (клавиатура)
+        leftStick.draw(g2);
+        rightStick.draw(g2);
         drawHUD(g2);
     }
 
+    //MY CODE
     private void drawHUD(Graphics2D g2) {
         g2.setFont(new Font("Monospaced", Font.BOLD, 15));
 
@@ -78,13 +76,12 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
                 mouseX, mouseY, keyX, keyY), 20, H - 12);
     }
 
-    // ── обработка мыши → левая палочка ──────────────────────────────────
-
+    //AI CODE
     @Override
     public void mouseMoved(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
-        leftStick.setPosition(mouseX, mouseY); // MY CODE — левая палочка следует за мышью
+        leftStick.setPosition(mouseX, mouseY);
         repaint();
     }
 
@@ -92,12 +89,11 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
     public void mouseDragged(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
-        leftStick.setPosition(mouseX, mouseY); // MY CODE — левая палочка следует за мышью
+        leftStick.setPosition(mouseX, mouseY);
         repaint();
     }
 
-    // ── обработка клавиатуры → правая палочка ───────────────────────────
-
+    //AI CODE
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -108,7 +104,7 @@ public class MovementLogic extends JPanel implements MouseMotionListener, KeyLis
         }
         keyX = Math.max(20, Math.min(W - 20, keyX));
         keyY = Math.max(20, Math.min(H - 20, keyY));
-        rightStick.setPosition(keyX, keyY); // MY CODE — правая палочка управляется клавиатурой
+        rightStick.setPosition(keyX, keyY);
         repaint();
     }
 
