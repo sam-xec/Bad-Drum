@@ -1,6 +1,9 @@
 package badDrum.logic;
 
-import badDrum.logic.equationPuzzle.PuzzleState;
+import badDrum.equationPuzzle.PuzzleState;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StateManager<T> {
 
@@ -21,15 +24,19 @@ public class StateManager<T> {
         }
     }
 
-    public void backToNormal(PuzzleState p){
-        boolean solved = p.puzzleSolved;
+    public void backToNormal(PuzzleState puzzle){
+        boolean solved = puzzle.puzzleSolved;
         if (solved){
-            p = null;
+            puzzle = null;
         }
     }
 
     public void setSignal(T signal){
         this.signal = signal;
+    }
+
+    public T getSignal() {
+        return signal;
     }
 
     public void freeze(){
