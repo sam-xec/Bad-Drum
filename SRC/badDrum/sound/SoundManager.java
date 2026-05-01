@@ -13,15 +13,10 @@ import javax.sound.sampled.*;
 
 public class SoundManager {
 
-    PlaySound sound;
+   
     VolumeControl volume;
 
-    public void play(VolumeControl volume){
-        PlaySound sound = new PlaySound();
-        volume.vol =(FloatControl)sound.clip.getControl(FloatControl.Type.MASTER_GAIN); // MY CODE
-        volume.vol.setValue(volume.volumeLevel); // MY CODE
-    }
-
+   
     public void highPitchSoundOn(PlaySound sound, VolumeControl volume){
         volume.requestVolumeChange(VolumeControl.MAX_VOLUME - volume.volumeLevel);
         volume.lockVolume();

@@ -12,7 +12,7 @@ public class PlaySound {
     private static final String ASSET_PATH = "Assets/Sounds/";
     private static final Map<String, Clip> clipCache = new HashMap<>();
 
-    public PlaySound() { }
+    
 
     public void playSound(String fileName) {
         new Thread(() -> {
