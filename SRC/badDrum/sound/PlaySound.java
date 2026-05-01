@@ -17,6 +17,8 @@ public class PlaySound {
     public void playSound(String fileName) {
         new Thread(() -> {
             try {
+                Thread.sleep(500);
+
                 Clip clip = getClip(fileName);
 
                 if (clip.isRunning()) {
@@ -25,8 +27,12 @@ public class PlaySound {
 
                 clip.setFramePosition(0);
                 clip.start();
+               } catch (InterruptedException e) {
+                System.err.println("Sound delay was interrupted: " + fileName);
+                Thread.currentThread().interrupt();
 
-            } catch (Exception e) {
+                  } 
+             catch (Exception e) {
                 System.err.println("Sound playback error: " + fileName);
                 e.printStackTrace();
             }
