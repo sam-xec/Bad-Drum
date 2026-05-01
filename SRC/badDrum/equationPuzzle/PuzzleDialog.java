@@ -1,4 +1,4 @@
-package badDrum.logic.equationPuzzle;
+package badDrum.equationPuzzle;
 
 import javax.swing.*;
 

@@ -1,10 +1,4 @@
-package badDrum.logic.equationPuzzle;
-
-import javax.swing.*;
-
-import java.awt.*;
-
-import static java.lang.System.exit;
+package badDrum.equationPuzzle;
 
 
 public class PuzzleState {
