@@ -35,8 +35,16 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         instructionButton.setBounds(30, 30, 220, 60);
         add(instructionButton);
 
-        // AI CODE — open instructions window
-        instructionButton.addActionListener(e -> new InstructionFrame());
+        // AI CODE — open instructions window, restore focus after close
+        instructionButton.addActionListener(e -> {
+            InstructionFrame instrFrame = new InstructionFrame();
+            instrFrame.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent we) {
+                    requestFocusInWindow(); // FIX: return keyboard focus to GamePanel
+                }
+            });
+        });
 
         // MY CODE — слушаем движение мыши и клавиатуру
         addMouseMotionListener(this);
@@ -102,17 +110,6 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         drum.draw(g2);
         leftStick.draw(g2);   // MY CODE — левая (мышь)
         rightStick.draw(g2);  // MY CODE — правая (клавиатура)
-
-        // MY CODE — подсказка управления
-        g2.setFont(new Font("Monospaced", Font.BOLD, 14));
-        g2.setColor(new Color(40, 100, 220));
-        g2.fillOval(20, 100, 12, 12);
-        g2.setColor(Color.DARK_GRAY);
-        g2.drawString("Left stick  — mouse", 40, 111);
-        g2.setColor(new Color(200, 40, 40));
-        g2.fillOval(20, 120, 12, 12);
-        g2.setColor(Color.DARK_GRAY);
-        g2.drawString("Right stick — WASD / arrows", 40, 131);
 
         // AI CODE — highlight clicked area (simple yellow overlay)
         g2.setColor(new Color(255, 255, 0, 80));

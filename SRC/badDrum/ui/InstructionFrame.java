@@ -15,6 +15,9 @@ public class InstructionFrame extends JFrame {
         // AI code  — center the window
         setLocationRelativeTo(null);
 
+        // FIX: must be DISPOSE so windowClosed event fires in GamePanel
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         // MY CODE — create main panel with warm studio background
         JPanel panel = new JPanel();
         panel.setLayout(null);
