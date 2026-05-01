@@ -19,7 +19,7 @@ public class Drum {
 
         try {
             // MY CODE — load visible drumset
-            drumImage = ImageIO.read(Drum.class.getResource("Drum_model.jpg"));
+            drumImage = ImageIO.read(Drum.class.getResource("Drum_backG.jpg"));
 
         } catch (IOException | IllegalArgumentException e) {
             e.printStackTrace();
