@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class LeftStick {
 
-    // MY CODE — center point (can be updated at runtime)
+    // MY CODE — center point 
     private int cx;
     private int cy;
 
@@ -16,7 +16,7 @@ public class LeftStick {
         this.cy = centerY;
     }
 
-    // MY CODE — update position (called by MovementLogic on mouse move)
+    // MY CODE — update position 
     public void setPosition(int centerX, int centerY) {
         this.cx = centerX;
         this.cy = centerY;

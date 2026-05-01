@@ -2,7 +2,7 @@ package badDrum.ui;
 
 import javax.swing.*;
 import java.awt.*;
-
+/* A small window that shows the instructions for the game. */
 public class InstructionFrame extends JFrame {
 
     public InstructionFrame() {
@@ -14,9 +14,9 @@ public class InstructionFrame extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // AI CODE — close only this window
 
         JPanel panel = new JPanel(); // MY CODE — main panel
-        panel.setLayout(null); // MY CODE — manual layout
-        panel.setBackground(new Color(240, 230, 210)); // MY CODE — warm beige background
-        setContentPane(panel); // MY CODE — attach panel
+        panel.setLayout(null); // MY CODE 
+        panel.setBackground(new Color(240, 230, 210));
+        setContentPane(panel); // MY CODE
 
         JLabel title = new JLabel("HOW TO USE THE DRUM SET"); // MY CODE — title text
         title.setFont(new Font("Georgia", Font.BOLD, 32)); // MY CODE — title font
@@ -32,7 +32,7 @@ public class InstructionFrame extends JFrame {
                 "• Use the INSTRUCTIONS button to open this window.\n" +
                 "• Press BACK to return to the game."
         ); // MY CODE — instruction text
-        text.setEditable(false); // MY CODE — read-only
+        text.setEditable(false);
         text.setFont(new Font("Georgia", Font.PLAIN, 24)); // MY CODE — text font
         text.setForeground(new Color(60, 40, 20)); // MY CODE — text color
         text.setBackground(new Color(240, 230, 210)); // MY CODE — match panel color

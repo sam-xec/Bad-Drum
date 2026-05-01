@@ -2,6 +2,7 @@ package badDrum.ui;
 
 import javax.swing.*;
 import java.awt.*;
+/* Game Window. Creates the buttom and shows the game panel.` */
 
 public class GameWindow extends JFrame {
 
@@ -50,14 +51,14 @@ public class GameWindow extends JFrame {
         endButton.setBounds(650, 480, 300, 90);
         mainPanel.add(endButton);
 
-        // AI CODE — open game panel ONCE
+        // AI CODE — open game panel 
         startButton.addActionListener(e -> {
 
             JFrame gameFrame = new JFrame("Drum Game");
             gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            // AI CODE — add GamePanel only once
+            // AI CODE — add GamePanel 
             GamePanel gamePanel = new GamePanel();
             gameFrame.add(gamePanel);
 
