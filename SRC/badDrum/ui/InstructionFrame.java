@@ -30,6 +30,7 @@ public class InstructionFrame extends JFrame {
                 "• Move right stick with W A S D.\n" +
                 "• Hit drums to play sounds.\n" +
                 "• Use the INSTRUCTIONS button to open this window.\n" +
+                "• Press Space to kick the bass drum.\n" +
                 "• Press BACK to return to the game."
         ); // MY CODE — instruction text
         text.setEditable(false);
