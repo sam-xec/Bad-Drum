@@ -30,7 +30,7 @@ public class InstructionFrame extends JFrame {
                 "• Move right stick with W A S D.\n" +
                 "• Hit drums to play sounds.\n" +
                 "• Use the INSTRUCTIONS button to open this window.\n" +
-                "• Press BACK to return to the game.\n"
+                "• Press BACK to return to the game."
         ); // MY CODE — instruction text
         text.setEditable(false); // MY CODE — read-only
         text.setFont(new Font("Georgia", Font.PLAIN, 24)); // MY CODE — text font
