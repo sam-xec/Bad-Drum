@@ -127,7 +127,7 @@ public class CollisionDetection {
             case RACK_TOM:     return "Rack-tom.wav";
             case RACK_TOM2:    return "Rack-tom.wav";
             case RACK_TOM3:    return "Rack-tom.wav";
-            case FLOOR_TOM:    return "low-tom.wav";
+            case FLOOR_TOM:    return "floor-tom.wav";
             case CRASH_CYMBAL: return "Cymabal-drum(1).wav";
             case RIDE_CYMBAL:  return "ride-cymbal.wav";
             default:           return null;
