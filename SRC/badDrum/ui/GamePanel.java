@@ -173,4 +173,35 @@ instructionButton.addActionListener(e -> {
 
     @Override public void keyReleased(KeyEvent e) {} // MY CODE — unused
     @Override public void keyTyped(KeyEvent e) {} // MY CODE — unused
+
+    private javax.swing.Timer freeTrialTimer = new javax.swing.Timer(40_000, e -> showPaywall());
+
+    {
+        freeTrialTimer.setRepeats(false);
+        freeTrialTimer.start();
+    }
+
+    private void showPaywall() {
+    playSound.playSound("havanagila.wav");
+
+        JPanel panel = new JPanel(new GridLayout(4, 2, 5, 8));
+        panel.add(new JLabel("Your free trial has expired! Please purchase the full version for €14 to continue playing."));
+        panel.add(new JLabel(""));
+        panel.add(new JLabel("Card Number:"));
+        panel.add(new JTextField("1234 5678 9012 3456"));
+        panel.add(new JLabel("Expiration Date:"));
+        panel.add(new JTextField("12/28"));
+        panel.add(new JLabel("CVV:"));
+        panel.add(new JTextField("***"));
+
+        int result = JOptionPane.showConfirmDialog(
+            this, panel, "Trial Expired",
+            JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        playSound.stopSound("havanagila.wav");
+
+        if (result == JOptionPane.OK_OPTION) {
+            JOptionPane.showMessageDialog(this, "Ha! I'm just kidding :)", "BadDrum", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 }

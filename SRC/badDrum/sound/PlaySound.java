@@ -37,6 +37,13 @@ public class PlaySound {
         }).start();
     }
 
+    public void stopSound(String fileName) {
+        Clip clip = clipCache.get(fileName);
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
+        }
+    }
+
     private static Clip getClip(String fileName)
             throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
