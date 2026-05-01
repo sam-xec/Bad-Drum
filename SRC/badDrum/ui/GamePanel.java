@@ -1,5 +1,9 @@
 package badDrum.ui;
 
+import badDrum.logic.CollisionDetection;
+import badDrum.logic.CollisionDetection.DrumZone;
+import badDrum.sound.PlaySound;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -15,6 +19,9 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     private int leftX, leftY;   // MY CODE — left stick position
     private int rightX, rightY; // MY CODE — right stick position
     private static final int KEY_STEP = 8; // MY CODE — movement speed
+
+    private final CollisionDetection collision = new CollisionDetection();
+    private final PlaySound playSound = new PlaySound();
 
     public GamePanel() {
 
@@ -102,11 +109,38 @@ instructionButton.addActionListener(e -> {
         rightStick.draw(g2); // MY CODE — draw right stick
     }
 
+    private Point leftTip() {
+        return new Point(leftX - 40, leftY + 40);
+    }
+
+    private Point rightTip() {
+        return new Point(rightX + 40, rightY + 40);
+    }
+
+    private void handleStrike(DrumZone zone) {
+        if (zone != DrumZone.NONE) {
+            String file = CollisionDetection.soundFileFor(zone);
+            if (file != null) {
+                playSound.playSound(file);
+                System.out.println("HIT: " + zone + " → " + file);
+            }
+        }
+    }
+
     @Override
     public void mouseMoved(MouseEvent e) {
         leftX = e.getX(); // MY CODE — update X
         leftY = e.getY(); // MY CODE — update Y
         leftStick.setPosition(leftX, leftY); // MY CODE — move stick
+        
+        if (drum != null) {
+            Point tip = leftTip();
+            int drumCX = getWidth() / 2;
+            int drumCY = getHeight() / 2 + 40;
+            DrumZone zone = collision.checkLeftStrike(tip.x, tip.y, drumCX, drumCY);
+            handleStrike(zone);
+        }
+        
         repaint(); // MY CODE — redraw
     }
 
@@ -124,6 +158,15 @@ instructionButton.addActionListener(e -> {
         }
 
         rightStick.setPosition(rightX, rightY); // MY CODE — move stick
+        
+        if (drum != null) {
+            Point tip = rightTip();
+            int drumCX = getWidth() / 2;
+            int drumCY = getHeight() / 2 + 40;
+            DrumZone zone = collision.checkRightStrike(tip.x, tip.y, drumCX, drumCY);
+            handleStrike(zone);
+        }
+        
         repaint(); // MY CODE — redraw
     }
 

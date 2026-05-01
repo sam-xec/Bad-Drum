@@ -5,19 +5,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sound.sampled.*; // MY CODE
-import java.lang.Math.*;
 
 public class PlaySound {
     Clip clip;
-    FloatControl vol;
+
     private static final String ASSET_PATH = "Assets/Sounds/";
     private static final Map<String, Clip> clipCache = new HashMap<>();
-    private final float VOLUME_LEVEL;
-
-    public PlaySound(String file_name, float volumeLevel) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        this.clip = getClip(file_name);
-        this.VOLUME_LEVEL = volumeLevel;
-    }
 
     public void playSound(String fileName) {
         new Thread(() -> {
@@ -29,10 +22,6 @@ public class PlaySound {
                 if (clip.isRunning()) {
                     clip.stop();
                 }
-
-                vol =(FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN); // MY CODE
-                vol.setValue(VOLUME_LEVEL); // MY CODE
-
 
                 clip.setFramePosition(0);
                 clip.start();
