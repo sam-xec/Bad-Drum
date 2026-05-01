@@ -13,20 +13,13 @@ import javax.sound.sampled.*;
 
 public class SoundManager {
 
-    static FloatControl vol;  // My Code
-    public static float volumeLevel = -10; /* mute = -80*/ // My Code
-
-
     PlaySound sound;
+    VolumeControl volume;
 
-    public void play(){
+    public void play(VolumeControl volume){
         PlaySound sound = new PlaySound();
-        vol =(FloatControl)sound.clip.getControl(FloatControl.Type.MASTER_GAIN); // MY CODE
-        vol.setValue(volumeLevel); // MY CODE
-    }
-
-    public void setVolumeLevel(int volumeLevel){
-        SoundManager.volumeLevel = volumeLevel;
+        volume.vol =(FloatControl)sound.clip.getControl(FloatControl.Type.MASTER_GAIN); // MY CODE
+        volume.vol.setValue(volume.volumeLevel); // MY CODE
     }
 
     public void highPitchSoundOn(int signal){
@@ -42,4 +35,10 @@ public class SoundManager {
         if (level == 2) ; // add another sound
         if (level == 3) ; // more sounds:")
     }
+
+    //================================
+    // VOLUME CONTROL
+    //================================
+
+
 }
