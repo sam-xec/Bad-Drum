@@ -1,10 +1,9 @@
 package badDrum.ui;
+
 import javax.swing.*;
 import java.awt.*;
 
-
 public class GameWindow extends JFrame {
-
 
     private JButton startButton;   // MY CODE
     private JButton endButton;     // MY CODE
@@ -14,55 +13,58 @@ public class GameWindow extends JFrame {
     public GameWindow() {
 
         setTitle("Java Project: Drum Simulator"); // MY CODE
-        setExtendedState(JFrame.MAXIMIZED_BOTH); //AI code
+        setExtendedState(JFrame.MAXIMIZED_BOTH);  // AI code
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // MY CODE
         setLocationRelativeTo(null); // MY CODE
 
-    
-        mainPanel = new JPanel(); // MY CODE
-        mainPanel.setBackground(Color.WHITE); // MY CODE
-        mainPanel.setLayout(null); // MY CODE
-        add(mainPanel); // MY CODE
+        // MY CODE — main panel with warm studio background
+        mainPanel = new JPanel();
+        mainPanel.setBackground(new Color(240, 230, 210)); // warm beige studio color
+        mainPanel.setLayout(null);
+        add(mainPanel);
 
-        
-        titleLabel = new JLabel("DRUM SIMULATOR"); // MY CODE
-        titleLabel.setForeground(Color.BLACK); // MY CODE
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 48)); // MY CODE
-        titleLabel.setBounds(600, 150, 600, 80); //AI code
-        mainPanel.add(titleLabel); // MY CODE
+        // MY CODE — title label
+        titleLabel = new JLabel("DRUM SIMULATOR");
+        titleLabel.setForeground(new Color(80, 50, 20)); // warm brown text
+        titleLabel.setFont(new Font("Georgia", Font.BOLD, 60)); // elegant studio font
+        titleLabel.setBounds(550, 150, 800, 100); // centered title
+        mainPanel.add(titleLabel);
 
-        
-        startButton = new JButton("START"); // MY CODE
-        startButton.setBackground(Color.LIGHT_GRAY); // MY CODE
-        startButton.setFont(new Font("Arial", Font.BOLD, 32)); // MY CODE
-        startButton.setBounds(650, 350, 300, 80); // MY CODE
-        mainPanel.add(startButton); // MY CODE
+        // MY CODE — Start button
+        startButton = new JButton("START");
+        startButton.setBackground(new Color(180, 140, 90)); // warm brown button
+        startButton.setForeground(Color.WHITE); // white text
+        startButton.setFont(new Font("Georgia", Font.BOLD, 36));
+        startButton.setFocusPainted(false); // remove blue border
+        startButton.setBounds(650, 350, 300, 90);
+        startButton.setBorderPainted(false);
+        mainPanel.add(startButton);
 
+        // MY CODE — End button
+        endButton = new JButton("END");
+        endButton.setBackground(new Color(180, 140, 90));
+        endButton.setForeground(Color.WHITE);
+        endButton.setFont(new Font("Georgia", Font.BOLD, 36));
+        endButton.setFocusPainted(false);
+        endButton.setBounds(650, 480, 300, 90);
+        endButton.setBorderPainted(false);//AI code 
+        mainPanel.add(endButton);
         
-        endButton = new JButton("END"); // MY CODE
-        endButton.setBackground(Color.LIGHT_GRAY); // MY CODE
-        endButton.setFont(new Font("Arial", Font.BOLD, 32)); // MY CODE
-        endButton.setBounds(650, 480, 300, 80); // MY CODE
-        mainPanel.add(endButton); // MY CODE
-
-        
+        // COMMENT AI — open the game panel in a new window
         startButton.addActionListener(e -> {
 
-            //AI code
             JFrame gameFrame = new JFrame("Drum Game");
-            gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); //AI code
-            gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // MY CODE
+            gameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-            //AI code
-            gameFrame.add(new GamePanel());
+            gameFrame.add(new GamePanel()); // COMMENT AI — load the game panel
 
-            gameFrame.setVisible(true); // MY CODE
-
-            dispose(); // MY CODE
+            gameFrame.setVisible(true);
+            dispose(); // close the menu window
         });
 
-        
-        endButton.addActionListener(e -> System.exit(0)); // MY CODE
+        // MY CODE — exit program
+        endButton.addActionListener(e -> System.exit(0));
 
         setVisible(true); // MY CODE
     }
