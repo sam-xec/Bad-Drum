@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
         setFocusable(true); // MY CODE — allow keyboard input
 
         // MY CODE — load small orange neon PNG image
-        ImageIcon neonIcon = new ImageIcon("src/badDrum/ui/instruction_neon.jpg");
+        ImageIcon neonIcon = new ImageIcon("src/badDrum/ui/instruction.jpg");
 
        // MY CODE — create the button using the image directly (no scaling)
        instructionButton = new JButton(neonIcon);
