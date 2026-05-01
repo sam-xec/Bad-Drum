@@ -61,10 +61,14 @@ public class GameWindow extends JFrame {
             GamePanel gamePanel = new GamePanel();
             gameFrame.add(gamePanel);
 
-            gameFrame.setVisible(true);
-
             // MY CODE — close menu window
             dispose();
+
+            gameFrame.setVisible(true);
+
+            // FIX: request focus AFTER the window is visible so KeyListener works
+            // and addNotify() gets correct panel dimensions
+            SwingUtilities.invokeLater(() -> gamePanel.requestFocusInWindow());
         });
 
         // MY CODE — exit program
