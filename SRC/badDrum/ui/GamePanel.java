@@ -6,9 +6,9 @@ import java.awt.event.*;
 
 public class GamePanel extends JPanel implements MouseMotionListener, KeyListener {
 
-    private Drum drum;               // MY CODE — drumset object
-    private LeftStick leftStick;     // MY CODE — left stick (mouse)
-    private RightStick rightStick;   // MY CODE — right stick (keyboard)
+    private Drum drum;               // MY CODE — drum 
+    private LeftStick leftStick;     // MY CODE — left stick 
+    private RightStick rightStick;   // MY CODE — right stick
 
     private JButton instructionButton; // MY CODE — image button
 
@@ -18,14 +18,14 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
 
     public GamePanel() {
 
-        setBackground(new Color(240, 230, 210)); // MY CODE — warm background
-        setLayout(null); // MY CODE — manual layout
-        setFocusable(true); // MY CODE — allow keyboard input
+        setBackground(new Color(240, 230, 210)); // MY CODE — warm background color 
+        setLayout(null); // MY CODE
+        setFocusable(true); // MY CODE 
 
-        // MY CODE — load small orange neon PNG image
+        // MY CODE — load neon jpg image
         ImageIcon neonIcon = new ImageIcon("src/badDrum/ui/instruction.jpg");
 
-       // MY CODE — create the button using the image directly (no scaling)
+       // MY CODE — create the button using the image
        instructionButton = new JButton(neonIcon);
 
       // AI CODE — remove default Swing visuals
@@ -69,7 +69,7 @@ instructionButton.addActionListener(e -> {
             int cx = getWidth() / 2; // MY CODE — center X
             int cy = getHeight() / 2 + 40; // MY CODE — center Y
 
-            drum = new Drum(cx, cy); // MY CODE — create drumset
+            drum = new Drum(cx, cy); // MY CODE — create drum
 
             leftX  = cx - 200; leftY  = cy - 80; // MY CODE — left stick start
             rightX = cx + 200; rightY = cy - 80; // MY CODE — right stick start
