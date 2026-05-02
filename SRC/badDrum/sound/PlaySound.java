@@ -15,7 +15,7 @@ public class PlaySound {
     public void playSound(String fileName) {
         new Thread(() -> {
             try {
-                Thread.sleep(500);
+                Thread.sleep((int)(Math.random()*501));
 
                 Clip clip = getClip(fileName);
 
@@ -44,7 +44,7 @@ public class PlaySound {
         }
     }
 
-    private static Clip getClip(String fileName)
+    public Clip getClip(String fileName)
             throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
         if (clipCache.containsKey(fileName)) {
@@ -64,10 +64,4 @@ public class PlaySound {
         clipCache.put(fileName, clip);
         return clip;
     }
-
-    // ==========================================
-    //             MY CODE PART
-    // ==========================================
-
-
 }

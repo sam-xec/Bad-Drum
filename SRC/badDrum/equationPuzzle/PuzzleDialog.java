@@ -10,7 +10,6 @@ public class PuzzleDialog {
 
     public void ask(PuzzleLogic Logic) throws Exception {
         int[] equat = Logic.getVarArray();
-        System.out.printf("Dialog receive %dx + %d = %d\n", equat[1], equat[2], equat[3]);
         String answer = stateEquation(equat);
         // ======================
         // AI generated section

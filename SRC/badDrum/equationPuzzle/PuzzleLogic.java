@@ -1,9 +1,6 @@
 package badDrum.equationPuzzle;
 
 import java.lang.Math;
-import java.util.Arrays;
-
-import static java.lang.System.*;
 
 public class PuzzleLogic {
 
@@ -24,7 +21,6 @@ public class PuzzleLogic {
         // Calculates c
         varArray[3] = (a * x) + b;
         c = varArray[3];
-        out.printf("x: %d, a: %d, b: %d, c: %d\n", x, a, b, c);
     }
 
     public int checkAnswer(int result) {
@@ -37,8 +33,6 @@ public class PuzzleLogic {
     }
     
     public int[] getVarArray() {
-        out.println("varArray: ");
-        out.println(Arrays.toString(varArray));
         return varArray;
     }
 }

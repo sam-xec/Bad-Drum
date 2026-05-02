@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements MouseMotionListener, KeyListene
     private final CollisionDetection collision = new CollisionDetection();
     private final PlaySound playSound = new PlaySound();
 
-    public GamePanel() {
+    public GamePanel(){
 
         setBackground(new Color(240, 230, 210)); // MY CODE — warm background color 
         setLayout(null); // MY CODE
@@ -104,7 +104,7 @@ instructionButton.addActionListener(e -> {
             rightStick = new RightStick(cx + 200, cy - 80);
         }
 
-        drum.draw(g2); // MY CODE — draw drumset
+        drum.draw(g2); // MY CODE — draw drum
         leftStick.draw(g2); // MY CODE — draw left stick
         rightStick.draw(g2); // MY CODE — draw right stick
     }

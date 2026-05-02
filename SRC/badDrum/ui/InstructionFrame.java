@@ -31,7 +31,24 @@ public class InstructionFrame extends JFrame {
                 "• Hit drums to play sounds.\n" +
                 "• Use the INSTRUCTIONS button to open this window.\n" +
                 "• Press Space to kick the bass drum.\n" +
-                "• Press BACK to return to the game."
+                "• Press BACK to return to the game.\n" +
+                        "\n"+
+                "Our drum is highly sensible\n" +
+                "and fragile musical instrument\n" +
+                "with a perfect musical sense. \n" +
+                "If you do not have an ideal musical ear,\n" +
+                "also known as \"Absolute hearing\", \n" +
+                "you are likely to miss the pitch \n" +
+                "with the probability of 10%. \n" +
+                        "\n"+
+                "That really offences our perfectly tuned \n" +
+                        "and impressionable drum, \n" +
+                        "so it will kindly punish you:) \n" +
+                        "But it has one soft spot:\n" +
+                        "    *it melts in front of \"Math genius\".*\n" +
+                        "So solve a math problem and prove\n" +
+                        "that you are good enough \n" +
+                        "to be considered a Math genius."
         ); // MY CODE — instruction text
         text.setEditable(false);
         text.setFont(new Font("Georgia", Font.PLAIN, 24)); // MY CODE — text font

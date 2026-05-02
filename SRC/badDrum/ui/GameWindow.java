@@ -1,8 +1,15 @@
 package badDrum.ui;
 
+import badDrum.logic.*;
+import badDrum.equationPuzzle.*;
+import badDrum.sound.*;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
-/* Game Window. Creates the buttom and shows the game panel.` */
+import java.io.IOException;
+/* Game Window. Creates the button and shows the game panel.` */
 
 public class GameWindow extends JFrame {
 
@@ -11,7 +18,7 @@ public class GameWindow extends JFrame {
     private JLabel titleLabel;     // MY CODE
     private JPanel mainPanel;      // MY CODE
 
-    public GameWindow() {
+    public GameWindow(){
 
         setTitle("Java Project: Drum Simulator"); // MY CODE
         setExtendedState(JFrame.MAXIMIZED_BOTH);  // AI CODE
@@ -78,7 +85,7 @@ public class GameWindow extends JFrame {
         setVisible(true); // MY CODE
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         new GameWindow(); // MY CODE
     }
 }
